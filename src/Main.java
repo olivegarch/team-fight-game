@@ -1,4 +1,6 @@
 /**
+ * This is the main class
+ *
  * @author OliveGarch
  */
 public class Main {
