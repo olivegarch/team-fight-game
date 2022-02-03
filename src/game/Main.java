@@ -1,3 +1,5 @@
+package game;
+
 /**
  * This is the main class
  *
