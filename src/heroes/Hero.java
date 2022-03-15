@@ -94,6 +94,17 @@ public class Hero {
     }
 
     /**
+     * Moves the hero to the given row and column
+     * @param row the row moved to
+     * @param col the column moved to
+     * @return true if the Hero can move to the location, false otherwise
+     */
+    public boolean move(int row, int col) {
+        // TODO
+        return false;
+    }
+
+    /**
      * Returns a string of the hero in the following format:
      * Name, ROLE, currentHP/maxHP
      * @return The string containing the hero's information

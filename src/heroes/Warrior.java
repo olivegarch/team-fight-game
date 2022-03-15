@@ -12,7 +12,7 @@ public class Warrior extends Hero{
     // constructor
 
     /**
-     * THe constructor class for Hero
+     * The constructor class for Hero
      *
      * @param name      the name of the Hero
      * @param hitPoints the hit points of the Hero
