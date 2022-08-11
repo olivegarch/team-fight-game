@@ -1,5 +1,7 @@
 package game;
 
+import heroes.Hero;
+
 /**
  * This is the main class
  *
@@ -7,6 +9,9 @@ package game;
  */
 public class Main {
     public static void main(String[] args) {
-        System.out.println("Hello World");
+        Hero hero1 = new Hero("Trelus", 100, 15, 10);
+        Hero hero2 = new Hero("Kari", 100, 15, 10);
+
+
     }
 }

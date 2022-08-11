@@ -12,7 +12,8 @@ public class Hero {
     private final int maxHitPoints;
     private final String name;
 
-    private static int DAMAGE_AMOUNT = 15;
+    private int damage;
+    private int agility;
 
     // constructor
 
@@ -21,10 +22,12 @@ public class Hero {
      * @param name the name of the Hero
      * @param hitPoints the hit points of the Hero
      */
-    public Hero(String name, int hitPoints) {
+    public Hero(String name, int hitPoints, int damage, int agility) {
         this.name = name;
         this.hitPoints = hitPoints;
         this.maxHitPoints = hitPoints;
+        this.damage = damage;
+        this.agility = agility;
     }
 
     // methods
@@ -38,7 +41,6 @@ public class Hero {
      * @param amount the damage taken
      */
     public void takeDamage(int amount) {
-        System.out.println(name + " takes " + amount + " damage ");
         System.out.println(name + " takes " + amount + " damage");
         this.hitPoints -= amount;
         if (hitPoints < 0){
@@ -46,8 +48,13 @@ public class Hero {
         }
     }
 
+    /**
+     * The Hero attacks another Hero
+     *
+     * @param enemy the enemy Hero
+     */
     public void attack(Hero enemy) {
-        enemy.takeDamage(DAMAGE_AMOUNT);
+        enemy.takeDamage(damage);
     }
 
     /**
@@ -91,6 +98,14 @@ public class Hero {
      */
     public int getHitPoints() {
         return hitPoints;
+    }
+
+    /**
+     * Calculates the initiative of the hero
+     * @return the initiative roll of the hero
+     */
+    public int rollInitiative() {
+        return this.agility;
     }
 
     /**
