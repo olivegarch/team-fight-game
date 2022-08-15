@@ -9,7 +9,7 @@ import heroes.Hero;
  *
  * @author OliveGarch
  */
-public class HeroFight {
+public class HeroFight extends Fight{
 
     private Hero hero1;
     private Hero hero2;
@@ -19,12 +19,13 @@ public class HeroFight {
     public HeroFight(Hero hero1, Hero hero2) {
         this.hero1 = hero1;
         this.hero2 = hero2;
-        this.battleReport += hero1.getName() + " engages " + hero2.getName() + " in the field";
+        this.battleReport = hero1.getName() + " engages " + hero2.getName() + " in the field";
     }
 
     /**
      * Fights a single round between the two heroes
      */
+    @Override
     public void fightRound() {
         int hero1InitRoll = hero1.rollInitiative();
         int hero2InitRoll = hero2.rollInitiative();
@@ -35,5 +36,10 @@ public class HeroFight {
         } else {
             // TODO
         }
+    }
+
+    @Override
+    public void fightComplete() {
+        // TODO
     }
 }
