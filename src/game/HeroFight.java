@@ -19,7 +19,8 @@ public class HeroFight extends Fight{
     public HeroFight(Hero hero1, Hero hero2) {
         this.hero1 = hero1;
         this.hero2 = hero2;
-        this.battleReport = hero1.getName() + " engages " + hero2.getName() + " in the field";
+        System.out.println(hero1.getName() + " engages " + hero2.getName() + " in the field");
+//        this.battleReport = hero1.getName() + " engages " + hero2.getName() + " in the field";
     }
 
     /**
@@ -30,6 +31,8 @@ public class HeroFight extends Fight{
         int hero1InitRoll = hero1.rollInitiative();
         int hero2InitRoll = hero2.rollInitiative();
         if (hero1InitRoll > hero2InitRoll) {
+            System.out.println(hero1.getName() + " gets the initiative");
+
             // TODO
         } else if (hero2InitRoll > hero1InitRoll) {
             // TODO

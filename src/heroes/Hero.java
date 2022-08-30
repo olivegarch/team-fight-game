@@ -1,7 +1,13 @@
 package heroes;
 
+import java.util.Scanner;
+
 /**
  * The Hero class.
+ *
+ * Like Sekrio:
+ * hitpoints are posture
+ * hearts are death markers
  *
  * @author OliveGarch
  */
@@ -10,6 +16,8 @@ public class Hero {
 
     private int hitPoints;
     private final int maxHitPoints;
+    private int hearts;
+    private final int maxHearts;
     private final String name;
 
     private int damage;
@@ -20,12 +28,15 @@ public class Hero {
     /**
      * THe constructor class for Hero
      * @param name the name of the Hero
-     * @param hitPoints the hit points of the Hero
+     * @param hitPoints the posture hit points of the Hero
+     * @param hearts the hearts of life of the Hero
      */
-    public Hero(String name, int hitPoints, int damage, int agility) {
+    public Hero(String name, int hitPoints, int hearts, int damage, int agility) {
         this.name = name;
         this.hitPoints = hitPoints;
         this.maxHitPoints = hitPoints;
+        this.hearts = hearts;
+        this.maxHearts = hearts;
         this.damage = damage;
         this.agility = agility;
     }
@@ -40,11 +51,15 @@ public class Hero {
      * check if hit points < 0, if true assign 0
      * @param amount the damage taken
      */
-    public void takeDamage(int amount) {
+    private void takeDamage(int amount) {
         System.out.println(name + " takes " + amount + " damage");
         this.hitPoints -= amount;
         if (hitPoints < 0){
             hitPoints = 0;
+            hearts -= 1;
+            if (hearts == 0) {
+                System.out.println(name + " is killed!");
+            }
         }
     }
 
@@ -61,11 +76,11 @@ public class Hero {
      * Checks if the hero has fallen
      *
      * prints fallen message
-     * checks if the hero's hit points are 0
-     * @return true if the hero's hit points are 0, false otherwise.
+     * checks if the hero's hearts are 0
+     * @return true if the hero's hearts are 0, false otherwise.
      */
     public boolean hasFallen() {
-        return (hitPoints == 0);
+        return (hearts == 0);
     }
 
     /**
@@ -106,6 +121,23 @@ public class Hero {
      */
     public int rollInitiative() {
         return this.agility;
+    }
+
+    /**
+     * Prompts the user for the Hero's action against the enemy
+     * @param enemy the enemy Hero. All actions towards enemies are directed at enemy
+     */
+    public void promptAction(Hero enemy) {
+        System.out.println("What does " + this.name + " do?");
+        Scanner scanner = new Scanner(System.in);
+        String input = scanner.nextLine();
+        switch (input) {
+            case "attack":
+                this.attack(enemy);
+                break;
+            default:
+                System.out.println(input + " is not a valid command");
+        }
     }
 
     /**
